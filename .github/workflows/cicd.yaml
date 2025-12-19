@@ -49,22 +49,22 @@ jobs:
               ubuntu@100.48.86.11 \
               "echo SSH CONNECTION SUCCESSFUL"
 
-      - name: Deploy Docker container
-        run: |
-          ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@100.48.86.11 << 'EOF'
-          # Login to AWS ECR
-          aws ecr get-login-password --region us-east-1 | \
-          docker login --username AWS --password-stdin 715411138617.dkr.ecr.us-east-1.amazonaws.com
+      # - name: Deploy Docker container
+      #   run: |
+      #     ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@100.48.86.11 << 'EOF'
+      #     # Login to AWS ECR
+      #     aws ecr get-login-password --region us-east-1 | \
+      #     docker login --username AWS --password-stdin 715411138617.dkr.ecr.us-east-1.amazonaws.com
 
-          # Pull latest image
-          docker pull 715411138617.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
+      #     # Pull latest image
+      #     docker pull 715411138617.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
 
-          # Stop & remove existing container (if any)
-          docker stop mediplus || true
-          docker rm mediplus || true
+      #     # Stop & remove existing container (if any)
+      #     docker stop mediplus || true
+      #     docker rm mediplus || true
 
-          # Run new container
-          docker run -d --name mediplus -p 80:80 \
-          715411138617.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
-          EOF
+      #     # Run new container
+      #     docker run -d --name mediplus -p 80:80 \
+      #     715411138617.dkr.ecr.us-east-1.amazonaws.com/mediplus:v1
+      #     EOF
 
