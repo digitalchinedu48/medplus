@@ -22,7 +22,7 @@ jobs:
         run: |
           aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 715411138617.dkr.ecr.us-east-1.amazonaws.com
 
-      - name: Build, tag, and push image to Amazon ECR
+      - name: Build and push image to Amazon ECR
         run: |
             docker build -t medplus:v1 .
             docker tag medplus:v1 715411138617.dkr.ecr.us-east-1.amazonaws.com/medplus:v1
