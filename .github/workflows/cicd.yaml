@@ -40,4 +40,4 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@44.222.199.47 "docker pull 715411138617.dkr.ecr.us-east-1.amazonaws.com/medplus:${{ github.run_number }}"
           ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@44.222.199.47 "docker rm -f medplus"
           
-          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@44.222.199.47 "docker run -d --name medplus -p 80:80 715411138617.dkr.ecr.us-east-1.amazonaws.com/medplus:${{ github.run_number }}
+          ssh -o StrictHostKeyChecking=no -i mykey.pem ubuntu@44.222.199.47 "docker run -d --name medplus -p 80:80 715411138617.dkr.ecr.us-east-1.amazonaws.com/medplus:${{ github.run_number }}"
