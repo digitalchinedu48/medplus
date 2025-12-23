@@ -32,9 +32,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-push
     steps:
-      - name: check my ssh key
+      - name: Create PEM key
         run: |
-          echo "${{ secrets.SSH_KEY }} > mykey.pem"
+          echo "${{ secrets.EC2_KEY_PEM }}" > mykey.pem
           chmod 400 mykey.pem
-          cat mykey.pem 
+          cat mykey.pem
           
